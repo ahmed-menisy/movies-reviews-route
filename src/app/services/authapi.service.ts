@@ -10,12 +10,13 @@ export class AuthapiService {
   constructor(private http: HttpClient) {
     this.saveUserData();
   }
+  baseUrl:string = `https://routeegypt.herokuapp.com/`
   userData: BehaviorSubject<any> = new BehaviorSubject(null);
   sendSignUp(data: object): Observable<any> {
-    return this.http.post(`https://route-egypt-api.herokuapp.com/signup`, data);
+    return this.http.post(`${this.baseUrl}signup`, data);
   }
   sendLogIn(data: object): Observable<any> {
-    return this.http.post(`https://route-egypt-api.herokuapp.com/signin`, data);
+    return this.http.post(`${this.baseUrl}signin`, data);
   }
   saveUserData():void {
     const encodeToken = localStorage.getItem('userTokenMovie');
